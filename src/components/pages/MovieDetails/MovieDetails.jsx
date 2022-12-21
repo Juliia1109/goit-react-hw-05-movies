@@ -1,52 +1,50 @@
 import { Outlet } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { Link,  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useMoviesDetails } from 'hooks/useMoviesDetails';
+import { Link, Button, ContainerImg, Img, Title, Text, TitleText, List } from './MovieDetails.styled.';
 
 export default function MovieDetails() {
-  const navigate = useNavigate();
   const location = useLocation()
   const movie = useMoviesDetails();
   
   return (
     <> 
-    <button onClick={() => {
-      navigate(location?.state?.from ?? '/' );
-      }}
-      >
-        Go back
-        </button>
+      <Link to={location?.state?.from ?? "/"}> 
+            <Button type="button">
+                Go back
+            </Button>
+        </Link>
        
             {movie && (
-          <div>
-            <img
+          <ContainerImg>
+            <Img
               src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
               alt={movie.title}
             />
 
             <div>
-              <h2>
+              <Title>
                 {movie.title}({movie.release_date.slice(0, 4)})
-              </h2>
-              <p>User Score: {movie.vote_average * 10}%</p>
-              <h3>Overview</h3>
-              <p>{movie.overview}</p>
-              <h3>Genres</h3>
+              </Title>
+              <Text>User Score: {movie.vote_average * 10}%</Text>
+              <TitleText>Overview</TitleText>
+              <Text>{movie.overview}</Text>
+              <TitleText>Genres</TitleText>
               {movie.genres.map(genre => (
-                <p key={genre.id}>{genre.name}</p>
+                <Text key={genre.id}>{genre.name}</Text>
               ))}
             </div>
-          </div>
+          </ContainerImg>
           )}
           <div>
-            <Link to='cast' state={{from: location}}>
-              Cast
-            </Link>
-            <Link to='reviews' state={{from: location}}>
-              Reviews
-            </Link>
-          </div>
-          <Outlet />
+            <TitleText>Additional information</TitleText>
+            <List>
+                    <Link to="cast" state={location.state}>Cast</Link>
+              
+                    <Link to="reviews" state={location.state}>Reviews</Link>                
+            </List>
+            <Outlet/>
+        </div>
      
    
     </>

@@ -1,37 +1,35 @@
-
 import { useMoviesCredits } from 'hooks/useMoviesCredits';
-
+import { List, Item, Img, Container, Title, Text } from './Cast.styled';
 
 export default function Cast() {
-
   const actors = useMoviesCredits();
-
-
   return (
-
     <>
       {actors && (
         <div>
-          <ul>
+          <List>
             {actors.map((actor, index) => (
-              <li key={index}>
+              <Item key={index}>
                 {actor.profile_path ? (
-                  <img
+                  <Img
                     src={
                       'https://image.tmdb.org/t/p/w500/' + actor.profile_path
                     }
                     alt={actor.name}
                   />
                 ) : (
-                  <div>Not found!</div>
+                  <Container>
+                  There is no cast in this film!</Container>
                 )}
-                <h3>{actor.character}</h3>
-                <h4>{actor.name}</h4>
-              </li>
+                <Title>{actor.character}</Title>
+                <Text>{actor.name}</Text>
+              </Item>
             ))}
-          </ul>
+          </List>
         </div>
       )}
     </>
   );
 }
+
+

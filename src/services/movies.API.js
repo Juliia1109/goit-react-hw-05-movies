@@ -29,17 +29,3 @@ export const fetchMoviesReviews = async id => {
   const response = await api.get(`movie/${id}/reviews`);
   return response.data.results;
 };
-
-// /trending/get-trending список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці. fetchMoviesTrending
-
-// /search/search-movies пошук фільму за ключовим словом на сторінці фільмів.
-//  fetchMoviesSearch
-
-// /movies/get-movie-details запит повної інформації про фільм для сторінки кінофільму.
-// fetchMoviesDetails
-
-// /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
-// fetchMoviesCredits
-
-// /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
-// fetchMoviesReviews

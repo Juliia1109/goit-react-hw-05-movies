@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 export const useMoviesCredits = () => {
   const { movieId } = useParams();
-  const [cast, setCast] = useState(null);
+  const [cast, setCast] = useState([]);
   useEffect(() => {
     fetchMoviesCredits(movieId).then(setCast);
   }, [movieId]);
