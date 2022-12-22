@@ -1,5 +1,4 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import { useMoviesTrending } from 'hooks/useMoviesTrending';
 import { Container, List, Item, Link } from './Home.styled';
 
@@ -14,7 +13,6 @@ const movies = useMoviesTrending ();
         <Link to={`movies/${movie.id}/`}>{movie.title}</Link>
     </Item>
 ))}
- <Outlet />
     </List>
   )}
   </Container>

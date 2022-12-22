@@ -21,7 +21,8 @@ export const Img = styled.img`
 export const Container = styled.div`
   width: 200px;
   height: 300px;
-  background-color: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  color: #9c27b0;
 `;
 export const Title = styled.h3`
   max-width: 200px;

@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router-dom';
 import { fetchMoviesSearch } from 'services/movies.API';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Form, Input, Button, List, Item, Link } from './Movies.styled';
 
 
 export default function Movies() {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (query === '' || query === null) return;
+    if (!query) return;
     
     fetchMoviesSearch(query).then(setMovies);
         }, [query]);
@@ -33,12 +33,11 @@ export default function Movies() {
    <List>
  {movies.map(movie => (
      <Item key={movie.id}>
-        <Link to={`${movie.id}`}>{movie.title}</Link>
+        <Link to={`${movie.id}`} state={{ from: location }}>{movie.title}</Link>
      </Item>
  ))}
   </List>
   )}
-    <Outlet />
     </>
 
   )

@@ -1,6 +1,6 @@
 
 import { useMoviesReviews } from "hooks/useMoviesReviews";
-import { Item, Title, Text } from "./Reviews.styled";
+import { Item, Title, Text, Container } from "./Reviews.styled";
 export default function Reviews() {
 
   const reviews = useMoviesReviews();
@@ -16,7 +16,7 @@ export default function Reviews() {
         ))}
       </ul>
     ) : (
-      <div>We don`t have any reviews for this movie</div>
+      <Container>We don`t have any reviews for this movie</Container>
     )}
   </>
   )

@@ -17,3 +17,9 @@ export const Text = styled.p`
   margin-bottom: 20px;
   font-weight: 500;
 `;
+export const Container = styled.div`
+  width: 200px;
+  height: 300px;
+  font-weight: 700;
+  color: #9c27b0;
+`;
